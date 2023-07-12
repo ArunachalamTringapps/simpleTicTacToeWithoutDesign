@@ -1,0 +1,21 @@
+@import url("https://fonts.googleapis.com/css2?family=Metrophobic&display=swap");
+.head
+{
+    
+    height: 10vh;
+    width: 100%;
+    text-align: left;
+    display: flex;
+    background-color: #4A55A2;
+    align-items: center;
+}
+.xo
+{
+    
+    margin-left: 5%;
+    /* font-size: 300%; */
+    font-size: 30px;
+    color: white;
+    font-family: Metrophobic;
+    font-weight: bolder;
+}

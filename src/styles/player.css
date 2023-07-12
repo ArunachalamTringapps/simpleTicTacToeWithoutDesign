@@ -1,0 +1,29 @@
+.split
+{
+    display: grid;
+    height: 90vh;
+    grid-template-columns: 0.7fr 1.6fr 0.7fr ;
+}
+.split .border
+{
+    /* border: 5px solid black; */
+
+}
+.winner
+{
+    position: absolute;
+    height: 90%;
+    width: 100%;    
+    /* left: 40%;
+    top:40%; */
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+.backButton
+{
+    position: absolute;
+    top: 3%;
+    right: 20px;
+    z-index: 1;
+}

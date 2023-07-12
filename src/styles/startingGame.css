@@ -1,0 +1,87 @@
+@import url("https://fonts.googleapis.com/css2?family=Metrophobic&display=swap");
+.detailsContainer{
+    /* background-color: red; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 90vh;
+
+    
+}
+.detailsBox
+{
+    box-shadow: 0 10px 10px 10px rgba(0,0,0,0.3);
+    height: 65%;
+    width: 50%;
+
+}
+.block{
+    display: flex;
+    flex-direction: column;
+    height: 50%;
+    width: 100%;
+    /* background-color: red; */
+    justify-content: center;
+    align-items: center;
+    
+}
+.head-tag{
+    margin-top: 30px;
+}
+    
+.startButton{
+    margin-top: 30px;
+    border: none;
+    outline: none;
+    box-shadow:0px 0px 0px 0px white ;
+}
+.startButton button{
+padding: 6px 24px;
+border: none;
+outline: none;
+background-color: #4A55A2;
+color: white;
+border-radius: 10px;
+border-color:white;
+/* border-spacing: 20px; */
+font-size: small;
+font-family: Metrophobic;
+cursor: pointer;
+font-weight: bold;
+
+ 
+}
+.startButton button:disabled{
+    background-color: #4a54a262;
+}
+
+input{
+    
+    display: block;
+    width: 230px;
+    height: 30px;
+    /* margin-top: 10px; */
+    /* margin-left: 28%; */
+    font-family: arial;
+    font-size:medium;
+    /* font-weight: bold; */
+    outline: none;
+    border-radius: 10px solid white;
+    background-color: white;
+    color: black;
+    transition: input 10s;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+    border-bottom: 2px solid black;
+    margin-top: 20px;
+    padding-left:10px ;
+
+   
+}
+input:hover{
+    opacity: 0.9;
+    /* background-color: black; */
+    color: black;
+}
+

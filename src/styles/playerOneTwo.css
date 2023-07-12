@@ -1,0 +1,44 @@
+.pOne
+{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #EEEEEE;
+    height: 100%;
+}
+.profile
+{
+    height:25%;
+    width: 50%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    font-size: 100%;
+    padding: 10%;
+    border-radius: 10%;
+    color: white;
+    /* border: 2PX solid #66FF99; */
+    box-shadow: 0 1px 10px 4px rgba(0,0,0,0.3);
+
+
+}
+.profile h2{
+    margin: 3%;
+    color: black;
+}
+.iconOne
+{
+    height:70%;
+    width: 70%;
+    /* padding: 15%; */
+
+}
+.iconTwo
+{
+    height:70%;
+    width: 70%;
+    /* padding: 15%; */
+    
+
+}
