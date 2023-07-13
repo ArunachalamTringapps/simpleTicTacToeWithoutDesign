@@ -19,19 +19,9 @@ const WinnerBoard = (props) => {
                     <img className='popper' src={popper_left_side} alt="popper_loading" />
                 </div>
 
-                {/* <div class='visible'>
-                    {XorO === boardSize * boardSize ? (
-                        <h3>Match Draw!!!</h3>
-                    ) : (
-                        <>
-                            <h3>Congratulations!</h3>
-                            <p>{XorO % 2 === 0 ? player2 : player1} won the game!</p>
-                        </>
-                    )}
-                </div> */}
+        
 
                 <div className='visible'>
-                    {console.log(XorO, boardSize * boardSize)}
                     {
                     XorO === boardSize * boardSize ? (<h3>Match Draw!!!</h3>) : <><h3>Congratulations!</h3><p>{`${XorO % 2 === 0 ? player1  : player2}`} won the game!</p></>
                     }

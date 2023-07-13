@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-globals */
 import './App.css';
 import Player from './components/Player';
 import Head from './components/Head';
@@ -11,60 +12,76 @@ const mycontext = createContext();
 function App() {
   const [player1, setPlayer1] = useState('');
   const [player2, setPlayer2] = useState('');
-  // const playerName1=player1.current.value;
-  // const playerName2=player2.current.value;
-
+  const [color,setColor]=useState('white');
   const [XorO, setXorO] = useState(0);
   const [boardSize, setBoardSize] = useState(3);
   const [initialCellValue,setInitialCellValue] = useState(null);
   const [board, setBoard] = useState([]);
+  const [kawin, setkawin] = useState([]);
   const [winnerGame, setWinnerGame] = useState(false);
 
   useEffect(() => {
     setInitialCellValue(null);
     
     if (+boardSize >  2 && +boardSize <21) {
-      console.log("haii",boardSize);
       const initialBoard = Array(+boardSize).fill(initialCellValue).map(() => Array(+boardSize).fill(initialCellValue));
       setBoard(initialBoard);
     }
     else{
-      console.log("hello",boardSize);
       setBoardSize(3);
       const initialBoard = Array(3).fill(initialCellValue).map(() => Array(3).fill(initialCellValue));
       setBoard(initialBoard);
     }
-    // if(+boardSize>6)
-    // {
-    //   document.getElementById('centerBox').classList.add('largeBox')
-    // }
+    if(+boardSize>6)
+    {
+      document.getElementById('centerBox').classList.add('largeBox')
+    }
   }, [boardSize]);
 
   useEffect(() => {
     if (XorO >= (boardSize * 2) - 1) {
       check();
     }
+ 
   }, [board]);
 
+  useEffect(() => {
+    console.log(kawin);
+    console.log(kawin.length);
+  }, [kawin]);
 
+  useEffect(()=>{
+  // eslint-disable-next-line array-callback-return
+  kawin.map((val)=>{
+    console.log(val);
+    let element=document.getElementById(`${val}`).classList.add('winnercolor');
+  })
+
+  },[winnerGame])
+  
   function box(rowIndex, colIndex) {
     const newBoard = [...board];
     if (newBoard[rowIndex][colIndex] === initialCellValue ) {
       setXorO(XorO + 1);
-      XorO % 2 === 0 ? newBoard[rowIndex][colIndex] = 'X' : newBoard[rowIndex][colIndex] = 'O';
+      if(XorO%2===0){
+        newBoard[rowIndex][colIndex] = 'X';
+        event.stopPropagation()
+        event.target.className='xbox';
+      }
+      else{
+        newBoard[rowIndex][colIndex] = 'O';
+        event.target.className='ybox';
+      }
       setBoard(newBoard);
-
     }
     
   }
 
   function winner() {
-    console.log("Come on");
     setWinnerGame(true);
-    
+
     setInitialCellValue("notNull");
     setXorO(XorO-1);
-    console.log(winnerGame);
     if (XorO % 2 !== 0) {
       console.log("player 1 win", XorO);
     }
@@ -72,36 +89,60 @@ function App() {
       console.log("player 2 win", XorO);
     }
   }
+  let flag=0;
 
   function rightCheak() {
     let right = 1;
+    setkawin([...kawin,`0-0`]);
+    // console.log(kawin);
     for (let rowCol = 1; rowCol < boardSize; rowCol++) {
+
       if (board[0][0] === board[rowCol][rowCol] && board[rowCol][rowCol] != null) {
+        setkawin((prev)=>[...prev,`${rowCol}-${rowCol}`]) 
+
         right = right + 1;
       }
       if (right === +boardSize) {
-        console.log("rightCheak");
         winner();
+        flag=1;
         break;
       }
+      if(rowCol===boardSize-1)
+      {
+        console.log('summa 1');
+        setkawin([]);
+      }
+      
     }
+    console.log('running 1');
+
 
 
 
   }
   function leftCheak() {
     let left = 1;
+    setkawin([...kawin,`0-${boardSize - 1}`]);
+    
     for (let column = 1; column < boardSize; column++) {
+
       if (board[0][boardSize - 1] === board[column][boardSize - column - 1] && board[0][boardSize - 1] != null) {
+        setkawin((prev)=>[...prev,`${column}-${boardSize-column-1}`])  
         left = left + 1;
       }
       if (left === +boardSize) {
-        console.log("leftCheak");
         winner();
+        flag=1;
         break;
       }
-    }
 
+      if(column===boardSize-1){
+        console.log('summa 2');
+        setkawin([]);
+      }
+    
+  }
+  console.log('---->running 2');
 
   }
 
@@ -109,17 +150,28 @@ function App() {
     let columnFixed = 0;
     let rowValid;
     for (let row = 0; row < boardSize; row++) {
+
+      setkawin([...kawin,`${row}-${columnFixed}`]);
       rowValid = 1;
       for (let col = 1; col < boardSize; col++) {
+
         if (board[row][columnFixed] === board[row][col] && board[row][columnFixed] != null) {
+          setkawin((prev)=>[...prev,`${row}-${col}`]);
+
           rowValid = rowValid + 1;
         }
       }
       if (rowValid === +boardSize) {
-        console.log("rovaild check");
         winner();
+        flag=1;
         break;
       }
+      if(row===boardSize-1)
+      {
+        console.log('summ 3');
+        setkawin([]);
+      }
+      console.log('running ----3');
     }
   }
   function columnCheck() {
@@ -127,52 +179,66 @@ function App() {
     let columnValid;
     for (let i = 0; i < boardSize; i++) {
       columnValid = 1;
+      setkawin([...kawin,`${rowFixed}-${i}`]);
       for (let j = 1; j < boardSize; j++) {
+
         if (board[rowFixed][i] === board[j][i] && board[rowFixed][i] != null) {
+        setkawin((prev)=>[...prev,`${j}-${i}`]);
+
           columnValid = columnValid + 1;
         }
       }
       if (columnValid === +boardSize) {
-        console.log("colunaild check");
         winner();
+        flag=1;
         break;
       }
+      if(i===boardSize-1)
+      {
+        console.log('summa 4');
+        setkawin([]);
+      }
+      console.log('running 4');
     }
   }
   function check() {
-    console.log("yes");
     if(XorO===boardSize*boardSize)
     {
-      console.log("draw")
       setWinnerGame(true);
       setInitialCellValue("notNull");
     }
-    
-    rightCheak();
-    leftCheak();
-    rowCheak();
-    columnCheck();
+    if(flag===0){
+      rightCheak();
+    }
+    if(flag===0){
+      leftCheak();
+
+    }
+    if(flag===0){
+      rowCheak();
+
+    }
+    if(flag===0){
+      columnCheck();
+    }
 
   }
 
-  //  const contextValue = useMemo(()=>({XorO,setXorO,board,setBoard,Box}),[board,XorO,Box])
-  // const contextValue ={XorO,setXorO,board,setBoard,box,boardSize};
+
   return (
     <>
       <BrowserRouter>
         <div className="App">
           <Head />
-          {/* <mycontext.Provider value={contextValue}> */}
 
           <Routes>
             <Route exact path="/" element={<StartingGame setBoardSize={setBoardSize} setPlayer1={setPlayer1} setPlayer2={setPlayer2} player1={player1} player2={player2} />} />
-            <Route path="/Player" element={<Player XorO={XorO} board={board} box={box} boardSize={boardSize} player1={player1} player2={player2} winnerGame={winnerGame} setWinnerGame={setWinnerGame}/>} />
+            <Route path="/Player" element={<Player color={color} XorO={XorO} board={board} box={box} boardSize={boardSize} player1={player1} player2={player2} winnerGame={winnerGame} setWinnerGame={setWinnerGame}/>} />
 
           </Routes>
 
 
-          {/* </mycontext.Provider> */}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </BrowserRouter>
     </>

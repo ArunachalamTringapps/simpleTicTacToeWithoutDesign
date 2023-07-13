@@ -6,10 +6,7 @@ export default function StartingGame(props) {
 
     const { setBoardSize, setPlayer1, setPlayer2,player1,player2} = props;
 
-    // function details(event)
-    // {
-    //     setBoardSize(event.target.value);
-    // }
+
     const boardHandler =(event)=>{
         if(+(event.target.value)===0)
         {
@@ -37,20 +34,6 @@ export default function StartingGame(props) {
             return false;
         }
     }
-
-    // function settingName() {
-    //     if(+(document.getElementById('board').value)===0)
-    //     {
-    //         setBoardSize(3);
-    //     }
-    //     else
-    //     {
-    //         setBoardSize(document.getElementById('board').value);
-    //     }
-    //     setPlayer1(document.getElementById('player1').value);
-    //     setPlayer2(document.getElementById('player2').value);
-        
-    // }
     return (
         
         <div className='detailsContainer'>

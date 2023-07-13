@@ -22,8 +22,15 @@
 }
 .backButton
 {
+    font-weight: 600;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: rgba(118, 118, 123, 0.132);
     position: absolute;
+    color: aliceblue;
     top: 3%;
     right: 20px;
     z-index: 1;
+    padding: 0.3em;
+    border: 2px solid ;
+    border-radius: 10px;
 }

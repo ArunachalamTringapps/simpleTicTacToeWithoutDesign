@@ -2,7 +2,6 @@ import React,{memo} from 'react'
 import '../styles/playerOneTwo.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faUser } from '@fortawesome/free-solid-svg-icons';
-import { UseMyContext } from '../App';
 
 const PlayerOne = (props) => {
   const {XorO,player1} = props ;

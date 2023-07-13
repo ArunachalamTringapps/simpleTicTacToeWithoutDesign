@@ -33,7 +33,7 @@
     width: 80%;
     padding: 5%;
 }
-.cells
+.white
 {
     display: flex;
     justify-content: center;
@@ -43,6 +43,39 @@
     border:1px solid black;
     /* font-size:large; */
     font-weight: bolder;    
+}
+.centerBox .xbox{
+    /* background-color: rgb(220, 234, 193); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    width: 100%;
+    border:1px solid black;
+    /* font-size:large; */
+    font-weight: bolder;
+}
+.centerBox .winnercolor{
+    background-color: rgb(220, 234, 193);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    width: 100%;
+    border:1px solid black;
+    /* font-size:large; */
+    font-weight: bolder;
+}
+.centerBox .ybox{
+    /* background-color: rgb(197, 156, 187); */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; 
+    width: 100%;
+    border:1px solid black;
+    /* font-size:large; */
+    font-weight: bolder;
 }
 .box span{
 
